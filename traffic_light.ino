@@ -29,31 +29,22 @@ void setup()
 
 void loop()
 { 
-  if (Serial.available() > 0)
-  {
-    
-    n = Serial.read();
-	  
-	timer = millis();
-		
-	digitalWrite(firstRed, HIGH);
-	digitalWrite(secondRed, HIGH);
-	  
-	while (true){
+  digitalWrite(firstRed, HIGH);
+  digitalWrite(secondRed, HIGH);
 		
 	//first cycle
 		
-	if ((millis()-timer)==1000){
+	if ((millis()-timer)>500){
 		digitalWrite(firstRed, LOW);
 		digitalWrite(firstGreen, HIGH);
 	}
 		
-	if ((millis()-timer)==7000){
+	if ((millis()-timer)>2000){
 		digitalWrite(firstGreen, LOW);
 		digitalWrite(firstYellow, HIGH);
 	}
 		
-	if ((millis()-timer)==13000){
+	if ((millis()-timer)>3500){
 		digitalWrite(firstRed, HIGH);
 		digitalWrite(firstYellow, LOW);
 	}
@@ -62,30 +53,19 @@ void loop()
 		
 	//second cycle
 		
-	if ((millis()-timer)==14000){
+	if ((millis()-timer)>4000){
 		digitalWrite(secondRed, LOW);
 		digitalWrite(secondGreen, HIGH);
 	}
 		
-	if ((millis()-timer)==20000){
+	if ((millis()-timer)>5500){
 		digitalWrite(secondGreen, LOW);
 		digitalWrite(secondYellow, HIGH);
 	}
 		
-	if ((millis()-timer)==24000){
+	if ((millis()-timer)>7000){
 		digitalWrite(secondRed, HIGH);
 		digitalWrite(secondYellow, LOW);
 		timer = millis();
 	}
-
-      }
-    
-
-    Serial.print("\n\nValor digitado: ");
-    Serial.println(n, BIN);
-    Serial.print("Valor lido: ");
-    Serial.println(n);
-    
-  }
-  Serial.flush();
 }
