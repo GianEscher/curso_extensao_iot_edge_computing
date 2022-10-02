@@ -33,73 +33,53 @@ void loop()
   {
     
     n = Serial.read();
-
-    switch (n)
-    {
-    case 115:
-
-		timer = millis();
-		
-		digitalWrite(firstRed, HIGH);
-		digitalWrite(secondRed, HIGH);
 	  
-		while (true){
+	timer = millis();
 		
-		//first cycle
+	digitalWrite(firstRed, HIGH);
+	digitalWrite(secondRed, HIGH);
+	  
+	while (true){
 		
-		if ((millis()-timer)==1000){
-			digitalWrite(firstRed, LOW);
-			digitalWrite(firstGreen, HIGH);
-		}
+	//first cycle
 		
-		if ((millis()-timer)==7000){
-			digitalWrite(firstGreen, LOW);
-			digitalWrite(firstYellow, HIGH);
-		}
+	if ((millis()-timer)==1000){
+		digitalWrite(firstRed, LOW);
+		digitalWrite(firstGreen, HIGH);
+	}
 		
-		if ((millis()-timer)==13000){
-			digitalWrite(firstRed, HIGH);
-			digitalWrite(firstYellow, LOW);
-		}
+	if ((millis()-timer)==7000){
+		digitalWrite(firstGreen, LOW);
+		digitalWrite(firstYellow, HIGH);
+	}
+		
+	if ((millis()-timer)==13000){
+		digitalWrite(firstRed, HIGH);
+		digitalWrite(firstYellow, LOW);
+	}
 		
 		
 		
-		//second cycle
+	//second cycle
 		
-		if ((millis()-timer)==14000){
-			digitalWrite(secondRed, LOW);
-			digitalWrite(secondGreen, HIGH);
-		}
+	if ((millis()-timer)==14000){
+		digitalWrite(secondRed, LOW);
+		digitalWrite(secondGreen, HIGH);
+	}
 		
-		if ((millis()-timer)==20000){
-			digitalWrite(secondGreen, LOW);
-			digitalWrite(secondYellow, HIGH);
-		}
+	if ((millis()-timer)==20000){
+		digitalWrite(secondGreen, LOW);
+		digitalWrite(secondYellow, HIGH);
+	}
 		
-		if ((millis()-timer)==24000){
-			digitalWrite(secondRed, HIGH);
-			digitalWrite(secondYellow, LOW);
-			timer = millis();
-		}
+	if ((millis()-timer)==24000){
+		digitalWrite(secondRed, HIGH);
+		digitalWrite(secondYellow, LOW);
+		timer = millis();
+	}
 
       }
-
-    case 114:
-
-      while(true){
-          int randomValue = random(1,6);
-          digitalWrite(randomValue,HIGH);
-          int randomDelay = random(200,400);
-          delay(randomDelay); 
-        }
-      break;
-
-    case 10:
-      break;
-     
-    default:
-		break;
-     }
+    
 
     Serial.print("\n\nValor digitado: ");
     Serial.println(n, BIN);
